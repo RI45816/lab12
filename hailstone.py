@@ -1,9 +1,9 @@
 # File:    hailstone.py
 # Started: by Dr. Gibson
-# Author:  YOUR NAME GOES EHRE
-# Date:    DATE GOES HERE
-# Section: SECTION NUMBER GOES HERE
-# E-mail:  EMAIL_GOES_HERE@umbc.edu
+# Author:  Uzoma Uwanamodo
+# Date:    11/30/2016
+# Section: 05
+# E-mail:  uu3@umbc.edu
 # Description:
 #   This file contains python code that implements the
 #   "flight" of a hailstone, following the HOTPO rules
@@ -22,15 +22,31 @@
 #          taken for the hailstone to reach a height of 1
 def flight(height):
 
+
     #### base case(s)
+    
     # print out an "invalid" message and return 0
+    if height < -1:
+        print("Invalid height of ", height)
+        return 0
+    else:
+        print("Height of ", height)
+
 
     # stops when it reachs height of 1 (the ground)
-
+    if height == 1:
+        return 0
+    
+    
     #### recursive case(s)
+    
     # if the current height is even, divide it by 2
-
+    if not height % 2:
+        return flight(height // 2) + 1
     # if the current height is odd, multiply it by 3, then add 1
+    else:
+        return flight(height * 3 + 1) + 1
+
 
 
 def main():
@@ -39,7 +55,8 @@ def main():
     startHeight = int(input("Please enter a height for the hailstone to start at: "))
 
     # initial recursive call goes here
-
+    steps = flight(startHeight)
+    
     print("\nIt took", steps, "steps to hit the ground.")
 
     print("Thank you for using the Hailstone Simulator!\n")
